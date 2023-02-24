@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 ### Github
 
-Для использования скриптов необходимо предоставить персональный токен доступа. Вы можете получить [Github Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) и установить его как переменную окружения `GITHUB_TOKEN` или заменить переменную `github_token` в скрипте `download.py` на свой персональный токен.
+Для использования скриптов необходимо предоставить персональный токен доступа. Вы можете получить [Github Personal Access Token](https://docs.github.com/ru/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) и установить его как переменную окружения `GITHUB_TOKEN` или заменить переменную `github_token` в скрипте `download.py` на свой персональный токен.
 
 ### Firebase
 
