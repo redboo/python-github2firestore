@@ -1,3 +1,4 @@
+import glob
 import os
 
 import firebase_admin
@@ -8,13 +9,12 @@ cred = credentials.Certificate("credentials.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+
 # Поиск пути к директории с файлами для загрузки
 root_path = "src"
 target_folder = "db"
-path = next(
-    (os.path.join(dirpath, target_folder) for dirpath, dirnames, _ in os.walk(root_path) if target_folder in dirnames),
-    None,
-)
+path = glob.glob(os.path.join(root_path, "**", target_folder), recursive=True)[0]
+
 
 if not path:
     print(f"Директория '{target_folder}' не найдена в '{root_path}'")
@@ -28,7 +28,7 @@ else:
     for filename in os.listdir(path):
         with open(os.path.join(path, filename), "r") as f:
             content = f.read()
-            doc_ref = db.collection("files").document(filename.rstrip(".md"))
+            doc_ref = db.collection("files").document(filename)
             batch.set(doc_ref, {"content": content})
             batch_size += 1
 
