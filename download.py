@@ -1,5 +1,6 @@
 import io
 import os
+import shutil
 import zipfile
 
 import requests
@@ -22,6 +23,10 @@ def download_repo():
 
     # Загружаем содержимое архива в виде байтов
     archive_response = requests.get(archive_url)
+
+    # Удаляем папку src, если она уже существует
+    if os.path.exists("src"):
+        shutil.rmtree("src")
 
     # Распаковываем содержимое архива в локальную директорию
     local_path = "src"
